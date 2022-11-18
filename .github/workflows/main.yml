@@ -35,3 +35,12 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
+        
+      - name: Build, tag, and push docker image to Amazon ECR
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: employee_demo
+          IMAGE_TAG: team1-api
+        run: |
+          docker build -t MihneaBocaKainos/java-api:maven .
+          docker push MihneaBocaKainos/java-api:maven
