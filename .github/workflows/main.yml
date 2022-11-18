@@ -42,5 +42,5 @@ jobs:
           ECR_REPOSITORY: employee_demo
           IMAGE_TAG: team1-api
         run: |
-          docker build -t MihneaBocaKainos/java-api:maven .
-          docker push MihneaBocaKainos/java-api:maven
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:maven .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:maven
